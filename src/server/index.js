@@ -2,12 +2,13 @@ import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
 
 import index from './routes';
-import config from '../../config/webpack.config';
+import config from '../../config/webpack/webpack.dev';
 
 const server = express();
-
 const compiler = webpack(config);
 
 // Port setup
@@ -18,12 +19,20 @@ server.use(express.static(path.join(__dirname, '../../public')));
 
 server.use(
   webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath
+    noInfo: true,
+    publicPath: '/public/',
+    serverSideRender: true
   })
 );
 
-// Set up index as router on root
-server.use('/', index);
+server.use(
+  webpackHotMiddleware(
+    compiler.compilers.find(compiler => compiler.name === 'client')
+  )
+);
+
+server.use(webpackHotMiddleware(compiler));
+server.use(webpackHotServerMiddleware(compiler));
 
 // Start server
 server.listen(port, () => {

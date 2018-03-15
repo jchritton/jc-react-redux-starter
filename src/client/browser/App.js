@@ -1,10 +1,10 @@
-import React from 'react';
-import { compose } from 'recompose';
+import React, { Component } from 'react';
 
 const App = props => (
-  <main>
-    <h1>Hello World, testing SSR</h1>
-  </main>
+  <div>
+    <h1>Hello World! Testing SSR...</h1>
+    <span>WE ARE STATELESS! :D</span>
+  </div>
 );
 
 export default App;

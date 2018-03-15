@@ -1,4 +1,4 @@
-export default ({ body, title }) => {
+export default ({ markup, title }) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -9,8 +9,8 @@ export default ({ body, title }) => {
       <title>${title}</title>
     </head>
     <body>
-      <div id="root">${body}</div>
-      <script type="text/javascript" src="/assets/bundle.js"></script>
+      <div id="root">${markup}</div>
+      <script type="text/javascript" src="/public/client.js" async></script>
     </body>
 
     </html>
