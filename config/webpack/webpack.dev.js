@@ -17,7 +17,7 @@ module.exports = [
     resolve: {
       extensions: ['.js', '.jsx']
     },
-    mode: 'development',
+    // mode: 'development',
     context: path.resolve(__dirname, '../..'),
     devtool: 'inline-source-map',
     module: {
@@ -51,7 +51,7 @@ module.exports = [
       publicPath: '/public/',
       libraryTarget: 'commonjs2'
     },
-    mode: 'development',
+    // mode: 'development',
     context: path.resolve(__dirname, '../..'),
     devtool: 'inline-source-map',
     resolve: {
@@ -78,16 +78,4 @@ module.exports = [
       new webpack.NoEmitOnErrorsPlugin()
     ]
   }
-  // mode: 'development',
-  // context: path.resolve(__dirname, '..'),
-
-  // devServer: {
-  //   contentBase: './public',
-  //   hot: true
-  // },
-  // plugins: [
-  //   new webpack.NamedModulesPlugin(),
-  //   new webpack.HotModuleReplacementPlugin(),
-  //   new webpack.NoEmitOnErrorsPlugin()
-  // ]
 ];
