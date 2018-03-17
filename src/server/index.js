@@ -1,21 +1,25 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
+import { matchRoutes } from 'react-router-config';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
 
-import index from './routes';
-import config from '../../config/webpack/webpack.dev';
+// import index from './routes';
+import clientConfig from '../../config/webpack/webpack.dev.client';
+import serverConfig from '../../config/webpack/webpack.dev.server';
 
 const server = express();
-const compiler = webpack(config);
+const compiler = webpack([clientConfig, serverConfig]);
 
 // Port setup
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // Set up directory for static served files
 server.use(express.static(path.join(__dirname, '../../public')));
+
+// server.use('/', index);
 
 server.use(
   webpackDevMiddleware(compiler, {
@@ -30,8 +34,6 @@ server.use(
     compiler.compilers.find(compiler => compiler.name === 'client')
   )
 );
-
-server.use(webpackHotMiddleware(compiler));
 server.use(webpackHotServerMiddleware(compiler));
 
 // Start server

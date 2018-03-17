@@ -1,11 +1,14 @@
 import React from 'react';
+import { styled } from 'styled-components';
 
 const NavBar = props => (
   <nav>
     <figure>LOGO IMAGE</figure>
     <ul>
       <li>
-        <div style={{ color: props.color }}>IMG</div>
+        <div className="avatar" style={{ color: props.color }}>
+          IMG
+        </div>
         <span>UserName</span>
       </li>
       <li>My Votes</li>

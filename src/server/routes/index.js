@@ -3,20 +3,14 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 
+import renderer from '../../client/browser/renderer';
+
 import App from '../../client/browser/App';
-import template from '../../client/browser/template';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  const appString = renderToString(<App />);
-
-  res.send(
-    template({
-      body: appString,
-      title: 'JC Freeform Vote'
-    })
-  );
+router.get('/', (req, res, next) => {
+  renderer();
 });
 
 export default router;
