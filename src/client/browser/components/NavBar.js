@@ -1,20 +1,41 @@
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const NavBar = props => (
-  <nav>
+  <StyledNav>
     <figure>LOGO IMAGE</figure>
     <ul>
       <li>
         <div className="avatar" style={{ color: props.color }}>
           IMG
         </div>
-        <span>UserName</span>
+        <span>Username</span>
       </li>
-      <li>My Votes</li>
-      <li>Login/Logout</li>
+      <li>Dashboard</li>
+      <li>Login</li>
     </ul>
-  </nav>
+  </StyledNav>
 );
+
+const StyledNav = styled.nav`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f3d66;
+  color: limegreen;
+  height: 3rem;
+  padding: 0 1rem;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    width: 35%;
+    justify-content: space-between;
+  }
+`;
 
 export default NavBar;

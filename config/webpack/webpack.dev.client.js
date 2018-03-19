@@ -20,8 +20,8 @@ const clientConfig = {
   },
   plugins: [
     // new HtmlWebpackPlugin({
-    //   inject: true,
-    //   template: './public/index.html'
+    //   inject: true
+    //   // template: './public/index.html'
     // }),
     // new GoogleFontsPlugin({
     //   fonts: [{ Montserrat: '500' }]

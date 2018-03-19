@@ -6,17 +6,14 @@ import { injectGlobal } from 'styled-components';
 import App from './App';
 
 injectGlobal`
-  @font-face {
-    font-family: "Montserrat";
-    src: url("./public/Montserrat-Medium.ttf") format("truetype");
-  }
-
   *, *:after, *:before {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    font-family: "Montserrat, sans-serif";
+    font-family: "Montserrat", sans-serif;
   }
 `;
 

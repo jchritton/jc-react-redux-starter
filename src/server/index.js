@@ -17,7 +17,7 @@ const compiler = webpack([clientConfig, serverConfig]);
 const port = process.env.PORT || 3000;
 
 // Set up directory for static served files
-server.use(express.static(path.join(__dirname, '../../public')));
+// server.use(express.static(path.join(__dirname, '../../public')));
 
 // server.use('/', index);
 
