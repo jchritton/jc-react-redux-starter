@@ -6,9 +6,7 @@ const NavBar = props => (
     <figure>LOGO IMAGE</figure>
     <ul>
       <li>
-        <div className="avatar" style={{ color: props.color }}>
-          IMG
-        </div>
+        <img className="avatar" src="http://via.placeholder.com/40x40" />
         <span>Username</span>
       </li>
       <li>Dashboard</li>

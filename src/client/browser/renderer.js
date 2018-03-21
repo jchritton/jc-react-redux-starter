@@ -7,8 +7,7 @@ import { ServerStyleSheet } from 'styled-components';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 
-import App from './App';
-// import Routes from './routes';
+import Routes from './routes';
 
 export default function serverRenderer() {
   return (req, res, next) => {
@@ -16,15 +15,14 @@ export default function serverRenderer() {
     const context = {};
     const helmet = Helmet.renderStatic();
 
-    const markup = renderToString(
-      sheet.collectStyles(
-        <StaticRouter location={req.path} context={context}>
-          <App />
-        </StaticRouter>
-      )
-    );
+    const markup = renderToString(sheet.collectStyles(<Provider>
+      <StaticRouter location={req.path} context={context}>
+        <div>{renderRoutes(Routes)}</div>
+      </StaticRouter>
+                                                      </Provider>));
 
     const styleTags = sheet.getStyleTags();
+    const initialState = serialize(req.store.getState());
 
     res.status(200).send(`
     <!DOCTYPE html>
@@ -40,31 +38,12 @@ export default function serverRenderer() {
     <body>
       <div id="root">${markup}</div>
       <script type="text/javascript" src="/public/client.js" async></script>
+                <script>
+              window.__INITIAL_STATE__ = ${state};
+          </script>
     </body>
 
     </html>
   `);
   };
 }
-
-// export default function serverRenderer({ clientStats, serverStats }) {
-//   return (req, res, next) => {
-//     const sheet = new ServerStyleSheet();
-//     const context = {};
-//     const markup = renderToString(
-//       sheet.collectStyles(
-//         <StaticRouter location={req.url} context={context}>
-//           <App />
-//         </StaticRouter>
-//       )
-//     );
-//     const styleTags = sheet.getStyleTags();
-
-//     res.status(200).send(
-//       Template({
-//         markup,
-//         title: 'JC Freeform Vote'
-//       })
-//     );
-//   };
-// }

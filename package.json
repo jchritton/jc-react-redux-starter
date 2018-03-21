@@ -1,7 +1,7 @@
 {
-  "name": "jc-vote",
+  "name": "jc-react-redux-starter",
   "version": "0.0.1",
-  "description": "A freeform voting application.",
+  "description": "Ongoing boilerplate setup, will be adjusting for features.",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
@@ -10,6 +10,7 @@
   "author": "John Chritton",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.3.2",
     "color": "^3.0.0",
     "express": "^4.16.3",
     "history": "^4.7.2",
@@ -60,7 +61,6 @@
     "eslint-plugin-react": "^7.7.0",
     "faker": "^4.1.0",
     "file-loader": "^1.1.11",
-    "google-fonts-webpack-plugin": "^0.4.4",
     "html-webpack-plugin": "^3.0.6",
     "jest": "^22.4.2",
     "postcss-loader": "^2.1.2",
@@ -69,6 +69,11 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.1",
     "style-loader": "^0.20.3",
+    "stylelint": "^9.1.3",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^0.8.1",
+    "stylelint-processor-styled-components": "^1.3.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
     "webpack-dev-middleware": "^3.0.1",
@@ -79,23 +84,15 @@
     "webpack-node-externals": "^1.6.0"
   },
   "jest": {
-    "setupFiles": [
-      "./test/config/setupTests.js"
-    ],
+    "setupFiles": ["./test/config/setupTests.js"],
     "bail": false,
-    "testMatch": [
-      "/**/?(*.)(spec|test).{js,jsx,mjs}"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
-    ],
+    "testMatch": ["/**/?(*.)(spec|test).{js,jsx,mjs}"],
+    "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "babel-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ]
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"]
   }
 }

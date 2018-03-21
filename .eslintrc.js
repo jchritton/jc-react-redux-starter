@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb'],
   parser: 'babel-eslint',
   env: {
     browser: true,
@@ -29,6 +29,7 @@ module.exports = {
         extensions: ['.js', '.jsx']
       }
     ],
+    'no-unused-expressions': [1, { allowTaggedTemplates: true }],
     'react/jsx-no-bind': 1,
     'immutable/no-let': 2
   }

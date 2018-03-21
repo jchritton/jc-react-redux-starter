@@ -1,4 +1,6 @@
 {
   "presets": ["env", "react"],
-  "plugins": ["styled-components"]
+  "plugins": [
+    ["babel-plugin-styled-components", { "ssr": true, "minify": false }]
+  ]
 }
